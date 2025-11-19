@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin - Contact Submissions</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo">
+        <h1>Mahad Usuul</h1>
+      </div>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/courses">Courses</a></li>
+        <li><a href="/events">Events</a></li>
+        <li><a href="/contact">Contact</a></li>
+        <li><a href="/admin/contacts">Admin</a></li>
+      </ul>
+      <div class="hamburger">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section id="admin-section">
+      <h2>Contact Form Submissions</h2>
+      <div id="contacts-container">
+        <p>Loading contacts...</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2023 Mahad Usuul. All rights reserved.</p>
+  </footer>
+
+  <script src="js/script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      fetch('/api/contacts')
+        .then(response => response.json())
+        .then(contacts => {
+          const container = document.getElementById('contacts-container');
+          if (contacts.length === 0) {
+            container.innerHTML = '<p>No contact submissions yet.</p>';
+            return;
+          }
+
+          let html = '<table><thead><tr><th>Name</th><th>Email</th><th>Message</th><th>Date</th></tr></thead><tbody>';
+          contacts.forEach(contact => {
+            html += `<tr>
+              <td>${contact.name}</td>
+              <td>${contact.email}</td>
+              <td>${contact.message}</td>
+              <td>${new Date(contact.date).toLocaleString()}</td>
+            </tr>`;
+          });
+          html += '</tbody></table>';
+          container.innerHTML = html;
+        })
+        .catch(error => {
+          document.getElementById('contacts-container').innerHTML = '<p>Error loading contacts.</p>';
+          console.error('Failed to load contacts:', error);
+        });
+    });
+  </script>
+</body>
+</html>
