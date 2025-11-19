@@ -8,7 +8,9 @@
 body {
   font-family: Arial, sans-serif;
   line-height: 1.6;
-  color: #333;
+  color: #2c3e50;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
   animation: fadeIn 1s ease-in;
 }
 
@@ -129,7 +131,7 @@ nav {
 }
 
 .nav-links a:hover {
-  color: #f4a261;
+  color: #ff6b6b;
 }
 
 .hamburger {
@@ -150,16 +152,26 @@ nav {
 main {
   margin-top: 80px; /* Adjust for fixed header */
   padding: 2rem;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 10px;
+  margin: 80px 2rem 2rem;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
 }
 
 section {
   margin-bottom: 2rem;
   animation: fadeInUp 1s ease-out;
+  background: linear-gradient(135deg, #e3f2fd, #f3e5f5);
+  padding: 2rem;
+  border-radius: 10px;
+  margin-bottom: 2rem;
 }
 
 h2 {
   margin-bottom: 1rem;
   animation: slideInRight 1s ease-out;
+  color: #3f51b5;
+  font-weight: bold;
 }
 
 /* Footer */
@@ -218,14 +230,16 @@ input, button {
 }
 
 button {
-  background: #f4a261;
+  background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
   color: white;
   border: none;
   cursor: pointer;
+  border-radius: 5px;
+  transition: background 0.3s;
 }
 
 button:hover {
-  background: #e76f51;
+  background: linear-gradient(135deg, #4ecdc4, #ff6b6b);
 }
 
 /* Admin contacts table */
@@ -233,6 +247,10 @@ table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 2rem;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
 }
 
 th, td {
@@ -242,7 +260,8 @@ th, td {
 }
 
 th {
-  background-color: #f2f2f2;
+  background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+  color: white;
   font-weight: bold;
 }
 
@@ -251,5 +270,5 @@ tr:nth-child(even) {
 }
 
 tr:hover {
-  background-color: #f5f5f5;
+  background: linear-gradient(135deg, #e3f2fd, #f3e5f5);
 }
