@@ -1,12 +1,10 @@
-# TODO List for Madrasa Website Project
+# TODO: Connect Contact Page to MySQL Database 'mahad_usuul'
 
-- [x] Update index.html to include full website structure: header with navigation, main sections for home, about, courses, events, contact, footer.
-- [x] Enhance style.css for responsive design, navigation styling, and accessibility basics.
-- [x] Create about.html page.
-- [x] Create courses.html page with e-learning placeholders.
-- [x] Create events.html page with event calendar placeholder.
-- [x] Create contact.html page with communication tools placeholder.
-- [x] Create js/script.js for basic interactivity (e.g., mobile menu toggle).
-- [x] Add placeholders for user login, donation, multilingual support.
-- [x] Test the site in a browser for responsiveness and functionality.
-- [x] Create admin page to view contact form submissions.
+## Steps to Complete
+
+- [x] Update config.php to use MySQL connection and create tables (users, contacts, events) if not exist.
+- [x] Update contacts.php to use MySQL instead of SQLite.
+- [x] Update admin-contacts.php to use MySQL instead of SQLite.
+- [x] Update contact.html: Add action="contact.php" and method="post" to the form, and add a div for success/error messages.
+- [x] Run updated config.php to create tables in MySQL database.
+- [ ] Test form submission from contact.html to ensure data is inserted into MySQL.

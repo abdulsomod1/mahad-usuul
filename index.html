@@ -10,15 +10,15 @@
   <header>
     <nav>
       <div class="logo">
-        <h1>Mahad Usuul</h1>
+        <h1 data-en="Mahad Usuul" data-ar="معهد أصول">Mahad Usuul</h1>
       </div>
       <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="courses.html">Courses</a></li>
-        <li><a href="events.html">Events</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="payment.html">Payment</a></li>
+        <li><a href="index.html?lang=en" data-en="Home" data-ar="الرئيسية">Home</a></li>
+        <li><a href="about.html?lang=en" data-en="About" data-ar="حول">About</a></li>
+        <li><a href="courses.html?lang=en" data-en="Courses" data-ar="الدورات">Courses</a></li>
+        <li><a href="events.html?lang=en" data-en="Events" data-ar="الأحداث">Events</a></li>
+        <li><a href="contact.html?lang=en" data-en="Contact" data-ar="اتصل">Contact</a></li>
+        <li><a href="payment.html?lang=en" data-en="Payment" data-ar="الدفع">Payment</a></li>
       </ul>
       <div class="hamburger">
         <div></div>
@@ -29,45 +29,56 @@
   </header>
 
   <section id="mahad-section">
-    <h1>Mahad Usuul Lughotul Arobiyatil Islamyy</h1>
-    <p>Welcome to our Islamic educational institution.</p>
-    <a href="about.html" class="cta-button">Learn More</a>
+    <h1 data-en="Mahad Usuul Lughotul Arobiyatil Islamyy" data-ar="معهد أصول لغة العربية الإسلامية">Mahad Usuul Lughotul Arobiyatil Islamyy</h1>
+    <p data-en="Welcome to our Islamic educational institution." data-ar="مرحبا بكم في مؤسستنا التعليمية الإسلامية.">Welcome to our Islamic educational institution.</p>
+    <a href="about.html" class="cta-button" data-en="Learn More" data-ar="تعلم المزيد">Learn More</a>
   </section>
 
   <main>
     <section>
-      <h2>Our Mission</h2>
-      <p>To provide quality education in Arabic language and Islamic studies.</p>
+      <h2 data-en="Our Mission" data-ar="مهمتنا">Our Mission</h2>
+      <p data-en="To provide quality education in Arabic language and Islamic studies." data-ar="تقديم تعليم عالي الجودة في اللغة العربية والدراسات الإسلامية.">To provide quality education in Arabic language and Islamic studies.</p>
     </section>
 
     <section>
-      <h2>User Portal</h2>
+      <h2 data-en="User Portal" data-ar="بوابة المستخدم">User Portal</h2>
       <form class="login-form">
-        <input type="text" placeholder="Username" required>
-        <input type="password" placeholder="Password" required>
-        <button type="submit">Login</button>
+        <input type="text" placeholder="Username" data-en="Username" data-ar="اسم المستخدم" required>
+        <input type="password" placeholder="Password" data-en="Password" data-ar="كلمة المرور" required>
+        <button type="submit" data-en="Login" data-ar="تسجيل الدخول">Login</button>
       </form>
-      <p><em>Note: Secure user portals planned for future development.</em></p>
+      <p><em data-en="Note: Secure user portals planned for future development." data-ar="ملاحظة: بوابات المستخدم الآمنة مخططة للتطوير المستقبلي.">Note: Secure user portals planned for future development.</em></p>
     </section>
 
     <section>
-      <h2>Support Us</h2>
+      <h2>Admin</h2>
+      <form class="admin-form">
+        <input type="text" name="username" placeholder="Username" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <label><input type="checkbox" id="show-password"> Show password</label>
+        <button type="button">Login</button>
+      </form>
+      <div id="admin-error" style="display:none; color:red;">Wrong password</div>
+    </section>
+
+    <section>
+      <h2 data-en="Support Us" data-ar="ادعمنا">Support Us</h2>
       <form class="donation-form">
-        <input type="number" placeholder="Amount" required>
-        <button type="submit">Donate</button>
+        <input type="number" placeholder="Amount" data-en="Amount" data-ar="المبلغ" required>
+        <button type="submit" data-en="Donate" data-ar="تبرع">Donate</button>
       </form>
-      <p><em>Note: Full e-commerce integration planned for future development.</em></p>
+      <p><em data-en="Note: Full e-commerce integration planned for future development." data-ar="ملاحظة: التكامل الكامل للتجارة الإلكترونية مخطط للتطوير المستقبلي.">Note: Full e-commerce integration planned for future development.</em></p>
     </section>
 
     <section>
-      <h2>Language</h2>
-      <button onclick="switchLanguage()">Switch to Arabic</button>
-      <p><em>Note: Full multilingual support planned for future development.</em></p>
+      <h2 data-en="Language" data-ar="اللغة">Language</h2>
+      <button onclick="switchLanguage()" data-en="Switch to Arabic" data-ar="التبديل إلى العربية">Switch to Arabic</button>
+      <p><em data-en="Note: Full multilingual support planned for future development." data-ar="ملاحظة: الدعم متعدد اللغات الكامل مخطط للتطوير المستقبلي.">Note: Full multilingual support planned for future development.</em></p>
     </section>
   </main>
 
   <footer>
-    <p>&copy; 2023 Mahad Usuul. All rights reserved.</p>
+    <p data-en="&copy; 2023 Mahad Usuul. All rights reserved." data-ar="&copy; 2023 معهد أصول. جميع الحقوق محفوظة.">&copy; 2023 Mahad Usuul. All rights reserved.</p>
   </footer>
 
   <script src="js/script.js"></script>

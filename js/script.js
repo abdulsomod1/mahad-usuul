@@ -1,4 +1,11 @@
 document.addEventListener('DOMContentLoaded', function() {
+  // Load language from URL parameter
+  const urlParams = new URLSearchParams(window.location.search);
+  const lang = urlParams.get('lang');
+  if (lang === 'ar') {
+    switchLanguage();
+  }
+
   // Hamburger menu toggle
   const hamburger = document.querySelector('.hamburger');
   const navLinks = document.querySelector('.nav-links');
@@ -43,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
       const data = Object.fromEntries(formData);
 
       try {
-        const response = await fetch('/api/login', {
+        const response = await fetch('login.php', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(data)
@@ -69,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function() {
       const data = Object.fromEntries(formData);
 
       try {
-        const response = await fetch('/api/register', {
+        const response = await fetch('register.php', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(data)
@@ -97,7 +104,7 @@ document.addEventListener('DOMContentLoaded', function() {
       const data = Object.fromEntries(formData);
 
       try {
-        const response = await fetch('/api/contact', {
+        const response = await fetch('contact.php', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(data)
@@ -115,10 +122,37 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
+  // Admin login button click
+  const adminLoginButton = document.querySelector('.admin-form button');
+  const adminForm = document.querySelector('.admin-form');
+  if (adminLoginButton && adminForm) {
+    adminLoginButton.addEventListener('click', function() {
+      const username = adminForm.username.value;
+      const password = adminForm.password.value;
+
+      if (username === 'Usuul' && password === 'DOMDOM@1975') {
+        window.location.href = 'admin-contacts.html';
+      } else {
+        document.getElementById('admin-error').style.display = 'block';
+      }
+    });
+  }
+
+  // Show password toggle
+  const showPasswordCheckbox = document.getElementById('show-password');
+  if (showPasswordCheckbox) {
+    showPasswordCheckbox.addEventListener('change', function() {
+      const passwordField = document.querySelector('.admin-form input[name="password"]');
+      if (passwordField) {
+        passwordField.type = this.checked ? 'text' : 'password';
+      }
+    });
+  }
+
   // Load events dynamically
   const eventsContainer = document.getElementById('events-container');
   if (eventsContainer) {
-    fetch('/api/events')
+    fetch('events.php')
       .then(response => response.json())
       .then(events => {
         events.forEach(event => {
@@ -154,4 +188,35 @@ document.addEventListener('DOMContentLoaded', function() {
   sections.forEach(section => {
     observer.observe(section);
   });
+
+  // Language switch functionality
+  window.switchLanguage = function() {
+    const elements = document.querySelectorAll('[data-en]');
+    let isSwitchingToArabic = false;
+    elements.forEach(element => {
+      const currentText = element.textContent.trim();
+      const englishText = element.getAttribute('data-en').trim();
+      if (currentText === englishText) {
+        isSwitchingToArabic = true;
+      }
+    });
+
+    elements.forEach(element => {
+      const englishText = element.getAttribute('data-en');
+      const arabicText = element.getAttribute('data-ar');
+      if (isSwitchingToArabic) {
+        element.textContent = arabicText;
+        element.setAttribute('dir', 'rtl');
+      } else {
+        element.textContent = englishText;
+        element.removeAttribute('dir');
+      }
+    });
+
+    // Update URL with language parameter
+    const newLang = isSwitchingToArabic ? 'ar' : 'en';
+    const url = new URL(window.location);
+    url.searchParams.set('lang', newLang);
+    window.history.pushState({}, '', url);
+  };
 });
