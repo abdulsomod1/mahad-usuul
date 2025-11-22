@@ -8,30 +8,34 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // Contact form submission with Supabase integration
+  // Contact form submission via Next.js API
   const contactForm = document.querySelector('.contact-form');
   if (contactForm) {
     contactForm.addEventListener('submit', async function(e) {
       e.preventDefault();
       const formData = new FormData(contactForm);
-      const name = formData.get('name');
-      const email = formData.get('email');
-      const message = formData.get('message');
-
-      // Import Supabase client from lib/supabase.js
-      const { supabase } = await import('./lib/supabase.js');
+      const payload = {
+        name: formData.get('name'),
+        email: formData.get('email'),
+        message: formData.get('message')
+      };
 
       try {
-        const { data, error } = await supabase
-          .from('contacts') // Assuming 'contacts' is the table name in Supabase
-          .insert([{ name, email, message }]);
+        const response = await fetch('/api/contacts', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
 
-        if (error) throw error;
+        if (!response.ok) {
+          const errorData = await response.json();
+          throw new Error(errorData.error || 'Failed to send message');
+        }
 
         alert('Message sent successfully!');
         contactForm.reset();
       } catch (error) {
-        console.error('Error sending message:', error.message);
+        console.error('Error sending message:', error);
         alert('Error sending message. Please try again.');
       }
     });

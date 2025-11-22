@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Admin Dashboard - Mahad Usuul</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
@@ -55,14 +55,7 @@
   </footer>
 
   <script>
-    const { createClient } = supabase;
-    const supabaseUrl = 'https://boypchcfpiaeqrosfrbn.supabase.co';
-    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJveXBjaGNmcGlhZXFyb3NmcmJuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjM3ODgzNzMsImV4cCI6MjA3OTM2NDM3M30.qycWLoy-MwGusT0cDjhUck4SKf6rK805FS7nyv31SQs';
-    const supabase = createClient(supabaseUrl, supabaseKey);
-  </script>
-  <script src="js/script.js"></script>
-  <script>
-    // Load contacts from Supabase on page load
+    // Load contacts from Next.js API on page load
     document.addEventListener('DOMContentLoaded', function() {
       displayContacts();
     });
@@ -72,15 +65,13 @@
       const tbody = document.getElementById('contacts-tbody');
       tbody.innerHTML = '';
       try {
-        const { data: contacts, error } = await supabase
-          .from('contacts')
-          .select('*')
-          .order('created_at', { ascending: false });
-        if (error) {
+        const response = await fetch('/api/contacts', { method: 'GET' });
+        if (!response.ok) {
           document.getElementById('error').style.display = 'block';
           document.getElementById('loading').style.display = 'none';
           return;
         }
+        const contacts = await response.json();
         contacts.forEach(contact => {
           const row = document.createElement('tr');
           row.innerHTML = `
