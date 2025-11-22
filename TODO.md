@@ -1,10 +1,6 @@
-# TODO: Connect Contact Page to MySQL Database 'mahad_usuul'
+# TODO: Remove Backend Files and Disconnect from XAMPP
 
-## Steps to Complete
-
-- [x] Update config.php to use MySQL connection and create tables (users, contacts, events) if not exist.
-- [x] Update contacts.php to use MySQL instead of SQLite.
-- [x] Update admin-contacts.php to use MySQL instead of SQLite.
-- [x] Update contact.html: Add action="contact.php" and method="post" to the form, and add a div for success/error messages.
-- [x] Run updated config.php to create tables in MySQL database.
-- [ ] Test form submission from contact.html to ensure data is inserted into MySQL.
+- [ ] Delete backend PHP files: config.php, contacts.php, contact.php, login.php, events.php, register.php, admin-contacts.php
+- [ ] Edit js/script.js: Remove fetch calls and event listeners for login, register, contact, and events
+- [ ] Edit admin-contacts.html: Remove fetch code and add static content for contacts table
+- [ ] Test the site by opening index.html in browser to ensure no errors
